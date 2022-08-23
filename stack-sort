@@ -1,0 +1,41 @@
+import java.util.*;
+class Stcksort{
+    
+    public static void main(String[] args) {
+        Stack<Integer> st=new Stack<>(); 
+        System.out.println("Enter no of elements to be pushed in stack");
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        Stcksort stack=new Stcksort();
+        stack.pushelem(n, st);
+        sc.close();
+        stack.sortstck(st);
+    }
+    public void pushelem(int num, Stack<Integer>st1){
+        Scanner scann=new Scanner(System.in);
+        System.out.println("Push"+" "+ num+" "+ "elements in stack");
+        for(int i=0; i<num; i++){
+            int elem=scann.nextInt();
+            st1.push(elem);
+        }
+        scann.close();
+        System.out.println(st1);
+    }
+
+    public void sortstck(Stack<Integer> st2){
+        System.out.println("calculating");
+        Stack<Integer> temp=new Stack<>();
+        temp.push(st2.pop());
+        
+        while(!st2.isEmpty()){
+            int t=st2.pop();
+            while(!temp.isEmpty() &&temp.peek()>t){
+                st2.push(temp.pop());
+            }
+            temp.push(t);
+        }
+        System.out.println("sorted stack is");
+        System.out.println(temp);
+    }
+    
+}
